@@ -87,7 +87,6 @@ function downloadReportAsExcel(report) {
 }
 
 function downloadReportAsPDF(report) {
-  // Build a simple printable HTML for the report and open print dialog
   const tableHead = report.columns.map((c) => `<th>${c}</th>`).join('');
   const tableBody = report.rows
     .map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join('')}</tr>`)
@@ -98,14 +97,15 @@ function downloadReportAsPDF(report) {
     <html>
       <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>${report.title}</title>
         <style>
           body { font-family: Inter, Arial, sans-serif; padding: 24px; color: #111; }
           h1 { margin: 0 0 8px; font-size: 20px; }
-          p { margin: 0 0 16px; color: #555 }
-          table { width: 100%; border-collapse: collapse; margin-top: 12px }
-          th, td { border: 1px solid #ddd; padding: 8px; text-align: left }
-          th { background: #f6f4fb }
+          p { margin: 0 0 16px; color: #555; }
+          table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+          th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+          th { background: #f6f4fb; }
         </style>
       </head>
       <body>
@@ -119,19 +119,27 @@ function downloadReportAsPDF(report) {
     </html>
   `;
 
-  const printWindow = window.open('', '_blank', 'noopener');
+  const printWindow = window.open('', '_blank');
   if (!printWindow) {
     alert('Please allow popups to download the report as PDF (the print dialog will open).');
     return;
   }
+
   printWindow.document.open();
   printWindow.document.write(html);
   printWindow.document.close();
-  printWindow.focus();
-  // Give the new window a moment to render, then open print dialog
-  setTimeout(() => {
+
+  const printContent = () => {
+    printWindow.focus();
     printWindow.print();
-  }, 500);
+  };
+
+  if (printWindow.document.readyState === 'complete') {
+    printContent();
+  } else {
+    printWindow.addEventListener('load', printContent);
+    setTimeout(printContent, 1000);
+  }
 }
 
 function Reports() {
