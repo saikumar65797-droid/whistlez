@@ -1,0 +1,502 @@
+.whistlez-ringtone-section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.ringtone-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ringtone-page-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1d1b4b;
+}
+
+.add-ringtone-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #7c3aed;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Grid of cards */
+.ringtone-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ringtone-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1 420px;
+  max-width: calc(50% - 10px);
+  background: #ffffff;
+  border: 1px solid #eef0f7;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.ringtone-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ringtone-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #f3effc;
+  color: #7c3aed;
+}
+
+.ringtone-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ringtone-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ringtone-name-row h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1d1b4b;
+}
+
+.default-badge {
+  background: #f3effc;
+  color: #7c3aed;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.ringtone-duration {
+  margin: 4px 0 0;
+  color: #a79fd1;
+  font-size: 0.82rem;
+}
+
+.ringtone-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.status-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status-badge--active {
+  background: #e3f9ec;
+  color: #1a9d5c;
+}
+
+.status-badge--disabled {
+  background: #f1f1f5;
+  color: #8b8ba7;
+}
+
+.status-toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  border-radius: 999px;
+  border: none;
+  background: #dcdce6;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease;
+}
+
+.status-toggle--on {
+  background: #17b06b;
+}
+
+.status-toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.status-toggle--on .status-toggle-knob {
+  transform: translateX(18px);
+}
+
+.ringtone-divider {
+  height: 1px;
+  background: #eef0f7;
+}
+
+.ringtone-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ringtone-play-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: transparent;
+  color: #7c3aed;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.ringtone-play-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #7c3aed;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ringtone-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.progress-time {
+  color: #8b8ba7;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.progress-time--total {
+  color: #a79fd1;
+}
+
+.progress-track {
+  flex: 1;
+  height: 5px;
+  border-radius: 999px;
+  background: #eceaf6;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #7c3aed;
+  transition: width 0.1s linear;
+}
+
+.ringtone-card-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #8b8ba7;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon-button--danger {
+  color: #ef476f;
+}
+
+@media (max-width: 1100px) {
+  .ringtone-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .ringtone-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ringtone-card-bottom {
+    flex-wrap: wrap;
+  }
+}
+
+/* Add Ringtone Modal */
+.ringtone-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(29, 27, 75, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.ringtone-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(29, 27, 75, 0.25);
+}
+
+.ringtone-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ringtone-modal-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1d1b4b;
+}
+
+.modal-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #f3effc;
+  color: #7c3aed;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ringtone-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #4b4b6b;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+  border: 1px solid #e4e2f2;
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 0.9rem;
+  color: #241e4d;
+  font-family: inherit;
+  background: #ffffff;
+  outline: none;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group select:focus {
+  border-color: #7c3aed;
+}
+
+.form-hint {
+  margin: 2px 0 0;
+  color: #a79fd1;
+  font-size: 0.78rem;
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.file-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1.5px dashed #d6cef5;
+  border-radius: 14px;
+  padding: 22px 16px;
+  color: #7c3aed;
+  background: #f9f7fe;
+  cursor: pointer;
+  text-align: center;
+}
+
+.file-dropzone span {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.file-dropzone small {
+  color: #a79fd1;
+  font-size: 0.76rem;
+}
+
+.file-selected-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e4e2f2;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #f9f7fe;
+}
+
+.file-selected-name {
+  flex: 1;
+  min-width: 0;
+  color: #241e4d;
+  font-size: 0.85rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-selected-duration {
+  color: #8b8ba7;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.file-remove-button {
+  border: none;
+  background: transparent;
+  color: #ef476f;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: inherit;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #4b4b6b;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #7c3aed;
+  cursor: pointer;
+}
+
+.form-error {
+  margin: 0;
+  color: #ef476f;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.ringtone-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.ringtone-modal-actions .business-button {
+  flex: 1;
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ringtone-modal-actions .business-button--outline {
+  background: #ffffff;
+  border: 1.5px solid #7c3aed;
+  color: #7c3aed;
+}
+
+.ringtone-modal-actions .business-button--solid {
+  background: #7c3aed;
+  border: 1.5px solid #7c3aed;
+  color: #ffffff;
+}
+
+.confirmation-message {
+  margin: 0;
+  padding: 12px 0 0;
+  color: #322f52;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}

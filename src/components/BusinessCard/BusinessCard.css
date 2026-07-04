@@ -1,0 +1,66 @@
+.business-card {
+  width: 170px;
+  min-height: 150px;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 18px;
+  text-align: center;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  color: var(--text);
+  background: var(--card);
+}
+
+.business-card:hover {
+  transform: translateY(-4px);
+}
+
+.business-card.active {
+  border-color: var(--primary);
+  border-width: 3px;
+  box-shadow: 0 18px 40px rgba(47, 128, 237, 0.18);
+  transform: translateY(-2px);
+}
+
+.business-card-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(47, 128, 237, 0.1);
+  font-size: 1.5rem;
+}
+
+.business-card span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 1199px) {
+  .business-card {
+    width: 160px;
+    padding: 22px 16px;
+  }
+}
+
+@media (max-width: 991px) {
+  .business-card {
+    width: 100%;
+    min-height: 145px;
+  }
+}
+
+@media (max-width: 575px) {
+  .business-card {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

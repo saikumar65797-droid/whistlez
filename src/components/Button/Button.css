@@ -1,0 +1,31 @@
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.96rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.action-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.action-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (max-width: 575px) {
+  .action-button {
+    width: 100%;
+    padding: 0 18px;
+  }
+}
