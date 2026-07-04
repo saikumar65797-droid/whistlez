@@ -1,4 +1,5 @@
 [build]
+  Base directory ="Whistlez"
   command = "npm run build"
   publish = "dist"
 
