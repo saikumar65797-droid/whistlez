@@ -1,6 +1,8 @@
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
 import { useSidebar } from '../../context/SidebarContext';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 import './Reports.css';
 
 const UsersReportIcon = () => (
@@ -87,59 +89,32 @@ function downloadReportAsExcel(report) {
 }
 
 function downloadReportAsPDF(report) {
-  const tableHead = report.columns.map((c) => `<th>${c}</th>`).join('');
-  const tableBody = report.rows
-    .map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join('')}</tr>`)
-    .join('');
+  // Create a jsPDF document and use autoTable to render the report table
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+  const marginLeft = 40;
+  const startY = 60;
 
-  const html = `
-    <!doctype html>
-    <html>
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>${report.title}</title>
-        <style>
-          body { font-family: Inter, Arial, sans-serif; padding: 24px; color: #111; }
-          h1 { margin: 0 0 8px; font-size: 20px; }
-          p { margin: 0 0 16px; color: #555; }
-          table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-          th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-          th { background: #f6f4fb; }
-        </style>
-      </head>
-      <body>
-        <h1>${report.title}</h1>
-        <p>${report.subtitle}</p>
-        <table>
-          <thead><tr>${tableHead}</tr></thead>
-          <tbody>${tableBody}</tbody>
-        </table>
-      </body>
-    </html>
-  `;
-
-  const printWindow = window.open('', '_blank');
-  if (!printWindow) {
-    alert('Please allow popups to download the report as PDF (the print dialog will open).');
-    return;
+  doc.setFontSize(14);
+  doc.text(report.title, marginLeft, 40);
+  if (report.subtitle) {
+    doc.setFontSize(10);
+    doc.text(report.subtitle, marginLeft, 56);
   }
 
-  printWindow.document.open();
-  printWindow.document.write(html);
-  printWindow.document.close();
+  // Prepare body rows as arrays
+  const body = report.rows.map((row) => row.map((cell) => String(cell)));
 
-  const printContent = () => {
-    printWindow.focus();
-    printWindow.print();
-  };
+  autoTable(doc, {
+    startY,
+    head: [report.columns],
+    body,
+    styles: { fontSize: 10 },
+    headStyles: { fillColor: [246, 244, 251], textColor: 0 },
+    margin: { left: marginLeft, right: marginLeft },
+  });
 
-  if (printWindow.document.readyState === 'complete') {
-    printContent();
-  } else {
-    printWindow.addEventListener('load', printContent);
-    setTimeout(printContent, 1000);
-  }
+  const filename = `${report.id}_${new Date().toISOString().replace(/[:.]/g, '-')}.pdf`;
+  doc.save(filename);
 }
 
 function Reports() {
